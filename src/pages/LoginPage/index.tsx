@@ -19,11 +19,7 @@ const LoginPage = () => (
             <StyledParagraph textAlign='center' fontColor='gray'>
               Crie sua conta para saborear muitas delícias e matar sua fome!
             </StyledParagraph>
-            <StyledButtonLink
-              to='/register'
-              $buttonSize='default'
-              $buttonStyle='gray'
-            >
+            <StyledButtonLink to='/register' $buttonSize='default' $buttonStyle='gray'>
               Cadastrar
             </StyledButtonLink>
           </StyledGridBox>

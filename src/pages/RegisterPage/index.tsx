@@ -7,7 +7,14 @@ import IllustrationBox from '../../components/IllustrationBox';
 import { StyledContainer, StyledGridBox } from '../../styles/grid';
 import { StyledTitle } from '../../styles/typography';
 
-const RegisterPage = () => (
+
+const RegisterPage = () => {
+
+  
+  // eslint-disable-next-line no-console
+  console.log("")
+
+  return(
     <StyledRegisterPage>
       <StyledContainer>
         <div className='flexGrid'>
@@ -29,6 +36,8 @@ const RegisterPage = () => (
         </div>
       </StyledContainer>
     </StyledRegisterPage>
-  );
+    )
+
+  };
 
 export default RegisterPage;
