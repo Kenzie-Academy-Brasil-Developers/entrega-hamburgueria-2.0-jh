@@ -1,5 +1,5 @@
 import  { InputHTMLAttributes } from 'react';
-import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
+import { UseFormRegisterReturn } from 'react-hook-form';
 import { StyledTextField } from '../../../styles/form';
 import { StyledParagraph } from '../../../styles/typography';
 import { IData } from '../RegisterForm';

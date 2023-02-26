@@ -2,51 +2,55 @@ import * as yup from "yup"
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 
+import {  useContext } from "react";
+import { IUser } from "../../../providers/User/@typesUser";
 import { StyledButton } from '../../../styles/button';
 import { StyledForm } from '../../../styles/form';
 import Input from '../Input';
 
-interface ILogin{
-
-  email: string;
-  senha: string;
-
-}
+import { UserContext } from "../../../providers/User/UserContext";
 
 
 const LoginForm = () => {
+
+
+  const {setLoading , loadiing , user , setUser , logar } = useContext(UserContext)
 
     const fromSchema = yup.object().shape({
   
       
       email: yup.string().required('Campo obrigatório').email('email invalido'),
-      senha: yup.string().required('Campo obrigatório'),
+      password: yup.string().required('Campo obrigatório'),
       
     })
 
 
-    const {register , handleSubmit ,formState:{errors} } = useForm <ILogin> ({
+    const {register , handleSubmit ,formState:{errors} } = useForm <IUser> ({
 
       resolver: yupResolver(fromSchema)
   
     })
 
 
-  const userObject =  ( data : ILogin) => {
+  const userObject =  (data : IUser ) => {
 
-    console.log(data)
+    logar(data)
 
   }
 
 
- return (<StyledForm onSubmit={handleSubmit(userObject)} >
+ return (
+ 
+  <StyledForm onSubmit={handleSubmit(userObject)} >
     <Input tipo='email' labelText='email' register={register('email')} error={errors.email?.message}/>
-    <Input tipo='password' labelText='senha' register={register('senha')} error={errors.senha?.message}/>
+    <Input tipo='password' labelText='senha' register={register('password')} error={errors.password?.message}/>
 
     <StyledButton type='submit'  $buttonSize='default' $buttonStyle='green'>
       Entrar
     </StyledButton>
-  </StyledForm>)
+  </StyledForm>
+  
+  )
   };
 
 

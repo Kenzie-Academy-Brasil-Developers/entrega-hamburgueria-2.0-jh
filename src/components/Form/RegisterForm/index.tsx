@@ -10,10 +10,9 @@ import { StyledForm } from '../../../styles/form';
 
 
 export interface IData {
-
-  name: string;
   email: string;
-  senha: string;
+  password: string;
+  name: string;
   comfirmarSenha: string;
 }
 
@@ -24,10 +23,20 @@ const RegisterForm = () => {
   const fromSchema = yup.object().shape({
 
     name: yup.string().required('Campo obrigatório'),
-    email: yup.string().required('Campo obrigatório').email('email invalido'),
-    senha: yup.string().required('Campo obrigatório'),
-    comfirmarSenha: yup.string().required("Campo obrigatório"),
-   
+
+    email: yup.string().required('Campo obrigatório'),
+
+    password: yup.string()
+    .required("Preencha este campo")
+    .matches(/[a-z]/ , "Deve conter uma letra minuscula")
+    .matches(/\d/ , "Deve conter ao menos 1 numero" )
+    .matches(/[A-Z]/ , "Deve conter ao menos uma letra maiuscula")
+    .matches(/\W|_/ , "Deve conter no minimo caracter especial")
+    .matches(/.{8,}/ , "Deve conter no minimo 8 caracters"),
+
+    comfirmarSenha: yup.string()
+    .required("Campo obrigatório")
+    .oneOf([yup.ref("password")] ,"Comfirmar senha deve ser igual senha"),
   })
 
   const {register , handleSubmit ,formState:{errors} } = useForm <IData> ({
@@ -36,7 +45,8 @@ const RegisterForm = () => {
 
   })
 
-  const dadosDoUsuario = (data : IData)  => {
+  
+  const dadosDoUsuario = ({comfirmarSenha , ...data} : IData)  => {
 
     // eslint-disable-next-line no-console
     console.log(data)
@@ -54,7 +64,7 @@ const RegisterForm = () => {
       <Input labelText='email' register={register('email')} error={errors.email?.message}/>
       
 
-      <Input labelText='senha' tipo='password' register={register('senha')} error={errors.senha?.message}/>
+      <Input labelText='senha' tipo='password' register={register('password')} error={errors.password?.message}/>
       
       <Input labelText='Comfirmar senha' tipo='password' register={register('comfirmarSenha')} error={errors.comfirmarSenha?.message}/>
 
