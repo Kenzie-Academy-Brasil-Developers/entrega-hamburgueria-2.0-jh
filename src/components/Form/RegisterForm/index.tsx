@@ -3,9 +3,12 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 
+import { useNavigate } from 'react-router-dom';
 import Input from '../Input';
 import { StyledButton } from '../../../styles/button';
 import { StyledForm } from '../../../styles/form';
+
+import { api } from '../../../services/api';
 
 
 
@@ -13,12 +16,14 @@ export interface IData {
   email: string;
   password: string;
   name: string;
-  comfirmarSenha: string;
+  comfirmarSenha?: string;
 }
 
 
 
 const RegisterForm = () => {
+
+  const navigate = useNavigate()
 
   const fromSchema = yup.object().shape({
 
@@ -46,13 +51,29 @@ const RegisterForm = () => {
   })
 
   
-  const dadosDoUsuario = ({comfirmarSenha , ...data} : IData)  => {
+  const dadosDoUsuario = async ({comfirmarSenha , ...data} : IData)  => {
 
-    // eslint-disable-next-line no-console
-    console.log(data)
-  
+    
 
+    try {
+
+
+      const token = await api.post("/users" , data)
+
+      localStorage.setItem("@TOKEN" , token.data.accessToken)
+      navigate( "/shop" )
+
+    } catch (error) {
+      
+      console.log(error)
+
+    }
+
+     
+    
   }
+
+
 
   return (
 
