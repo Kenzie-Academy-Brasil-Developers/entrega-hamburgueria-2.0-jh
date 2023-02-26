@@ -11,7 +11,7 @@ import { productsContext } from '../../providers/Products/ProductsContext';
 const CartModal = () => {
   
 
-  const {setModalOpen} = useContext(productsContext)
+  const {setModalOpen , carrinho} = useContext(productsContext)
   
   
   return(
@@ -36,12 +36,12 @@ const CartModal = () => {
 
         <CartProductList /> 
 
-        <div className='emptyBox'>
+        {!carrinho&&<div className='emptyBox'>
           <StyledTitle tag='h3' $fontSize='three' textAlign='center'>
             Sua sacola está vazia
           </StyledTitle>
           <StyledParagraph textAlign='center'>Adicione itens</StyledParagraph>
-        </div>
+        </div>}
       </div>
     </dialog>
   </StyledCartModalBox>
