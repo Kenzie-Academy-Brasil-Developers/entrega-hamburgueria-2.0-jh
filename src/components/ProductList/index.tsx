@@ -18,7 +18,7 @@ const ProductList = () => {
       
 
 
-      {products?.map((product : IProcucts ) => <ProductCard 
+      {products?.map((product: IProcucts) => <ProductCard 
         
         key={product.id}
         name={product.name} 

@@ -1,6 +1,8 @@
+import { useContext } from 'react';
 import { StyledProductCard } from './style';
 import { StyledButton } from '../../../styles/button';
 import { StyledParagraph, StyledTitle } from '../../../styles/typography';
+import { productsContext } from '../../../providers/Products/ProductsContext';
 
 interface Iproduct{
 
@@ -14,15 +16,28 @@ interface Iproduct{
 
 const ProductCard = ({name,category,price,img,id} : Iproduct ) => {
 
+
+  const { products , carrinho , setCarrinho } = useContext(productsContext)
  
-  const teste = () => {
+  const addCarrinho = () => {
 
-    alert(`ADICIONOU PRODUTO ID ${id}`)
+    
+    // eslint-disable-next-line array-callback-return
+    products?.map((product: Iproduct) => {
 
+      // eslint-disable-next-line eqeqeq
+      if(product.id == id){
+
+        // eslint-disable-next-line no-unused-expressions
+        carrinho ? setCarrinho([ ...carrinho ,product]) : setCarrinho([product])
+        
+      }
+      
+    })
   }
 
-
-
+  console.log(carrinho)
+  
  return (
   <StyledProductCard>
     <div className='imageBox'>
@@ -34,7 +49,7 @@ const ProductCard = ({name,category,price,img,id} : Iproduct ) => {
       </StyledTitle>
       <StyledParagraph className='category'>{category}</StyledParagraph>
       <StyledParagraph className='price'>R$ {price.toFixed(2)}</StyledParagraph>
-      <StyledButton onClick={teste} $buttonSize='medium' $buttonStyle='green'>
+      <StyledButton onClick={addCarrinho} $buttonSize='medium' $buttonStyle='green'>
         Adicionar
       </StyledButton>
     </div>
