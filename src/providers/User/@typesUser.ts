@@ -10,7 +10,7 @@ export interface IUser {
 }
 
 export interface IProcucts{
-
+    
     category: string;
     id: number;
     img: string;
@@ -26,7 +26,7 @@ export interface IUserContext {
     user: IUser | null ;
     setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
     logar:  (data: IUser) => Promise<void>;
-    products: IProcucts | null;
+    products: IProcucts[] | null;
     buscaProdutos: () => void;
     userLogout: () => void;
 }

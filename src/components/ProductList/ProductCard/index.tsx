@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { toast } from 'react-toastify';
 import { StyledProductCard } from './style';
 import { StyledButton } from '../../../styles/button';
 import { StyledParagraph, StyledTitle } from '../../../styles/typography';
@@ -23,20 +24,22 @@ const ProductCard = ({name,category,price,img,id} : Iproduct ) => {
 
     
     // eslint-disable-next-line array-callback-return
-    products?.map((product: Iproduct) => {
+    products?.map((product: any) => {
 
       // eslint-disable-next-line eqeqeq
       if(product.id == id){
 
         // eslint-disable-next-line no-unused-expressions
-        carrinho ? setCarrinho([ ...carrinho ,product]) : setCarrinho([product])
+        carrinho.length > 0 ? setCarrinho( [...carrinho , product]) : setCarrinho([product])
+
+        toast.success('Adicionado ao carrinho', {
+          autoClose: 2000,
+      });
         
       }
       
     })
   }
-
-  console.log(carrinho)
   
  return (
   <StyledProductCard>

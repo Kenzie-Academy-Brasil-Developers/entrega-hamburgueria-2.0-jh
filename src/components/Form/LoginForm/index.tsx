@@ -10,11 +10,9 @@ import Input from '../Input';
 
 import { UserContext } from "../../../providers/User/UserContext";
 
-
 const LoginForm = () => {
 
-
-  const {setLoading , loadiing , user , setUser , logar } = useContext(UserContext)
+  const { logar } = useContext(UserContext)
 
     const fromSchema = yup.object().shape({
   
@@ -24,20 +22,17 @@ const LoginForm = () => {
       
     })
 
-
     const {register , handleSubmit ,formState:{errors} } = useForm <IUser> ({
 
       resolver: yupResolver(fromSchema)
   
     })
 
-
   const userObject =  (data : IUser ) => {
 
     logar(data)
 
   }
-
 
  return (
  
@@ -52,6 +47,5 @@ const LoginForm = () => {
   
   )
   };
-
 
 export default LoginForm;

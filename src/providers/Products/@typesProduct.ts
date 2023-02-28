@@ -1,6 +1,7 @@
 import { IProcucts } from "../User/@typesUser";
 
 export interface Icarrinho{
+    category: string;
     name: string ;
     price: number;
     img: string;
@@ -9,12 +10,13 @@ export interface Icarrinho{
 
 export interface IProductsContext{
 
-    products: IProcucts[] | IProcucts | null;
+    products: IProcucts[] | null;
     modalOpen: boolean;
     setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    carrinho: Icarrinho[] | Icarrinho | false;
-    setCarrinho: React.Dispatch<React.SetStateAction<false | Icarrinho[]>>
-
+    carrinho: Icarrinho[] | [];
+    setCarrinho: React.Dispatch<React.SetStateAction<[] | Icarrinho[]>>;
+    filtrados:  Icarrinho[] | false;
+     setfiltrados: React.Dispatch<React.SetStateAction<false | Icarrinho[]>>;
 }
 
 

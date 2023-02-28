@@ -10,16 +10,12 @@ import { StyledForm } from '../../../styles/form';
 
 import { api } from '../../../services/api';
 
-
-
 export interface IData {
   email: string;
   password: string;
   name: string;
   comfirmarSenha?: string;
 }
-
-
 
 const RegisterForm = () => {
 
@@ -49,14 +45,10 @@ const RegisterForm = () => {
     resolver: yupResolver(fromSchema)
 
   })
-
   
   const dadosDoUsuario = async ({comfirmarSenha , ...data} : IData)  => {
 
-    
-
     try {
-
 
       const token = await api.post("/users" , data)
 
@@ -69,11 +61,7 @@ const RegisterForm = () => {
 
     }
 
-     
-    
   }
-
-
 
   return (
 

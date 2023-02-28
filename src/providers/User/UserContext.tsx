@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify";
 import { IUserContext, IUser, IDefaltProviderProps, IProcucts } from "./@typesUser";
 
 import { api } from "../../services/api";
@@ -10,7 +11,7 @@ export const UserProvider = ({children} : IDefaltProviderProps) => {
 
     const [loadiing , setLoading] = useState <boolean>(false)
     const [user , setUser] = useState <IUser | null>(null)
-    const [products , setProducts] = useState <IProcucts | null>(null)
+    const [products , setProducts] = useState <IProcucts[] | null>(null)
 
     const navigate = useNavigate()
 
@@ -55,9 +56,17 @@ export const UserProvider = ({children} : IDefaltProviderProps) => {
             navigate( "/shop" )
             localStorage.setItem("@TOKEN" , userDados.data.accessToken)
             
+            toast.success('Login efetuado com sucesso!', {
+                autoClose: 2000,
+            });
+            
+            
         } catch (error) {
             
-            console.log(error)
+            console.error(error)
+            toast.error('Verifique os dados e tente novamente!', {
+                autoClose: 2000,
+            });
 
         }
         
@@ -80,7 +89,7 @@ export const UserProvider = ({children} : IDefaltProviderProps) => {
             user 
             ,setUser , 
             logar , 
-            products , 
+            products ,
             buscaProdutos,
             userLogout,
         

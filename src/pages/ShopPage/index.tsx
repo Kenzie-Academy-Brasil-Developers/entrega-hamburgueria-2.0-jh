@@ -35,6 +35,8 @@ const ShopPage = () =>  {
         <ProductList />
       </StyledContainer>
     </main>
+
+    
   </StyledShopPage>
 )}
 

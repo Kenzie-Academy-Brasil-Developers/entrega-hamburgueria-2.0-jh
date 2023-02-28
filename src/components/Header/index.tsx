@@ -9,15 +9,13 @@ import { StyledContainer } from '../../styles/grid';
 import { UserContext } from '../../providers/User/UserContext';
 import { productsContext } from '../../providers/Products/ProductsContext';
 
-
-
 const Header = () => {
   
   const { setModalOpen} = useContext(productsContext)
   const {userLogout} = useContext(UserContext)
 
-
   return(
+
   <StyledHeader>
     <StyledContainer containerWidth={1300}>
       <div className='flexGrid'>
@@ -32,7 +30,7 @@ const Header = () => {
             <button
               type='button'
               onClick={() => {
-                 console.log("CARRINHO")
+          
                  setModalOpen(true)
               }}
             >
