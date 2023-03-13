@@ -9,35 +9,36 @@ import { UserContext } from '../../providers/User/UserContext';
 import { productsContext } from '../../providers/Products/ProductsContext';
 
 
-const ShopPage = () =>  {
+const ShopPage = () => {
 
-  const { buscaProdutos  } = useContext(UserContext)
-  const {modalOpen} = useContext(productsContext)
-  
+  const { buscaProdutos } = useContext(UserContext)
+  const { modalOpen } = useContext(productsContext)
+
   useEffect(() => {
 
-    if(!localStorage.getItem("(@TOKEN")){
+    if (!localStorage.getItem("@TOKEN")) {
 
       buscaProdutos()
-  
+
     }
-  
-  },[])
 
-  
-  
-  return(
-  <StyledShopPage>
-    {modalOpen && <CartModal />}
-    <Header />
-    <main>
-      <StyledContainer containerWidth={1300}>
-        <ProductList />
-      </StyledContainer>
-    </main>
+  }, [])
 
-    
-  </StyledShopPage>
-)}
+
+
+  return (
+    <StyledShopPage>
+      {modalOpen && <CartModal />}
+      <Header />
+      <main>
+        <StyledContainer containerWidth={1300}>
+          <ProductList />
+        </StyledContainer>
+      </main>
+
+
+    </StyledShopPage>
+  )
+}
 
 export default ShopPage
