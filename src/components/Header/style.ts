@@ -9,6 +9,10 @@ export const StyledHeader = styled.header`
 
     gap: 20px;
 
+    > h1 {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
     .logo {
       max-width: 160px;
     }

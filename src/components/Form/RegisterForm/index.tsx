@@ -47,6 +47,7 @@ const RegisterForm = () => {
 
   })
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const dadosDoUsuario = async ({ comfirmarSenha, ...data }: IData) => {
 
     try {
@@ -58,7 +59,8 @@ const RegisterForm = () => {
 
     } catch (error) {
 
-      console.log(error)
+      // eslint-disable-next-line no-console
+      console.error(error)
 
     }
 

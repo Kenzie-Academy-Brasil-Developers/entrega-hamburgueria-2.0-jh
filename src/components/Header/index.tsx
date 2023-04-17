@@ -10,40 +10,38 @@ import { UserContext } from '../../providers/User/UserContext';
 import { productsContext } from '../../providers/Products/ProductsContext';
 
 const Header = () => {
-  
-  const { setModalOpen} = useContext(productsContext)
-  const {userLogout} = useContext(UserContext)
 
-  return(
+  const { setModalOpen } = useContext(productsContext)
+  const { userLogout } = useContext(UserContext)
 
-  <StyledHeader>
-    <StyledContainer containerWidth={1300}>
-      <div className='flexGrid'>
-        <img
-          src={LogoKenzieBurguer}
-          alt='Kenzie Burguer Logo'
-          className='logo'
-        />
-        <nav className='nav' role='navigation'>
-          <SearchForm />
-          <div className='buttons'>
-            <button
-              type='button'
-              onClick={() => {
-          
-                 setModalOpen(true)
-              }}
-            >
-              <MdShoppingCart size={28} />
-            </button>
-            <button type='button' onClick={ () => userLogout()}>
-              <MdLogout size={28} />
-            </button>
-          </div>
-        </nav>
-      </div>
-    </StyledContainer>
-  </StyledHeader>
-)}
+  return (
+
+    <StyledHeader>
+      <StyledContainer containerWidth={1300}>
+        <div className='flexGrid'>
+          <h1>Hungria Burguer</h1>
+
+          <nav className='nav' role='navigation'>
+            <SearchForm />
+            <div className='buttons'>
+              <button
+                type='button'
+                onClick={() => {
+
+                  setModalOpen(true)
+                }}
+              >
+                <MdShoppingCart size={28} />
+              </button>
+              <button type='button' onClick={() => userLogout()}>
+                <MdLogout size={28} />
+              </button>
+            </div>
+          </nav>
+        </div>
+      </StyledContainer>
+    </StyledHeader>
+  )
+}
 
 export default Header

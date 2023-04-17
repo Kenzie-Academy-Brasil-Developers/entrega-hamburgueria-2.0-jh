@@ -8,7 +8,6 @@ import { StyledContainer } from '../../styles/grid';
 import { UserContext } from '../../providers/User/UserContext';
 import { productsContext } from '../../providers/Products/ProductsContext';
 
-
 const ShopPage = () => {
 
   const { buscaProdutos } = useContext(UserContext)
@@ -23,8 +22,6 @@ const ShopPage = () => {
     }
 
   }, [])
-
-
 
   return (
     <StyledShopPage>

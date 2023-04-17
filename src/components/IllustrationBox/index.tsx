@@ -1,12 +1,18 @@
 import { StyledIllustrationBox } from './style';
-import LogoKenzieBurguer from '../../assets/LogoKenzieBurguer.svg';
 import BallsIllustration from '../../assets/BallsIllustrations.svg';
 import Icon from '../../assets/Icon.svg';
 import { StyledParagraph } from '../../styles/typography';
 
+
+const img = "https://cdn-icons-png.flaticon.com/512/883/883806.png"
+
+
 const IllustrationBox = () => (
+
+
+
   <StyledIllustrationBox>
-    <img src={LogoKenzieBurguer} alt='Logo Kenzie Burguer' />
+    <img width={200} src={img} alt='Burguer' />
     <div className='styledBox'>
       <img src={Icon} alt='Ícone de cesta de compras' />
       <StyledParagraph>

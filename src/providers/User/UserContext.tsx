@@ -30,6 +30,7 @@ export const UserProvider = ({ children }: IDefaltProviderProps) => {
 
         } catch (error) {
 
+            // eslint-disable-next-line no-console
             console.log(error)
             localStorage.clear()
 
@@ -63,6 +64,7 @@ export const UserProvider = ({ children }: IDefaltProviderProps) => {
 
         } catch (error) {
 
+            // eslint-disable-next-line no-console
             console.error(error)
             toast.error('Verifique os dados e tente novamente!', {
                 autoClose: 2000,
