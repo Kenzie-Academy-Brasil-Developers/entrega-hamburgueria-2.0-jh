@@ -12,7 +12,8 @@ const IllustrationBox = () => (
 
 
   <StyledIllustrationBox>
-    <img width={200} src={img} alt='Burguer' />
+
+    <h1>Hungria Burguer</h1>
     <div className='styledBox'>
       <img src={Icon} alt='Ícone de cesta de compras' />
       <StyledParagraph>

@@ -6,6 +6,10 @@ export const StyledIllustrationBox = styled.div`
   flex-direction: column;
   gap: 30px;
 
+  > h1 {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
   .styledBox {
     display: flex;
     align-items: center;
